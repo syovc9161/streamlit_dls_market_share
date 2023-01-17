@@ -51,11 +51,15 @@ if __name__ == '__main__':
 
     # stroke_width = st.sidebar.slider("시작 월: ", 1, 12, 1)
 
-    st.subheader('{} {} 월별 통계 데이터'.format(show_company, genrre))
+    st.subheader('{} {} 월별 발행잔량'.format(show_company, genrre))
     
     if genrre == 'DLS':
-        st.area_chart(kis_month_stat.balanceSumDls)
+        # st.area_chart(kis_month_stat.balanceSumDls)
+        st.bar_chart(kis_month_stat.balanceSumDls)
     else:
-        st.area_chart(kis_month_stat.balanceSumEls)
+        # st.area_chart(kis_month_stat.balanceSumEls)
+        st.bar_chart(kis_month_stat.balanceSumEls)
+
     st.table(set_colname_to_korean(kis_month_stat, col_catalist).style.highlight_max(axis=0).format("{:,.0f}"))
+    st.write(' (*) 발행잔량합계 = DLS 발행잔량 + ELS 발행잔량')
     
